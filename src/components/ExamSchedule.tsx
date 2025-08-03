@@ -125,7 +125,27 @@ export const ExamSchedule: React.FC<ExamScheduleProps> = ({ isDarkMode = false }
             newTimeLeft[event.id] = `${seconds} ثانية`;
           }
         } else {
-          newTimeLeft[event.id] = '🎉 بدأ الاختبار!';
+          // Check if the exam has ended (assuming 2 hours duration)
+          const examEndTime = eventTime + (2 * 60 * 60 * 1000); // 2 hours after start
+          const timeSinceEnd = now - examEndTime;
+          
+          if (timeSinceEnd > 0) {
+            newTimeLeft[event.id] = '✅ انتهى الاختبار';
+          } else {
+            // Exam is currently running
+            const timeUntilEnd = examEndTime - now;
+            const hoursLeft = Math.floor(timeUntilEnd / (1000 * 60 * 60));
+            const minutesLeft = Math.floor((timeUntilEnd % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsLeft = Math.floor((timeUntilEnd % (1000 * 60)) / 1000);
+            
+            if (hoursLeft > 0) {
+              newTimeLeft[event.id] = `🎉 الاختبار جاري - متبقي ${hoursLeft} ساعة، ${minutesLeft} دقيقة`;
+            } else if (minutesLeft > 0) {
+              newTimeLeft[event.id] = `🎉 الاختبار جاري - متبقي ${minutesLeft} دقيقة، ${secondsLeft} ثانية`;
+            } else {
+              newTimeLeft[event.id] = `🎉 الاختبار جاري - متبقي ${secondsLeft} ثانية`;
+            }
+          }
         }
       });
 
@@ -145,7 +165,15 @@ export const ExamSchedule: React.FC<ExamScheduleProps> = ({ isDarkMode = false }
 
   const getUrgencyClass = (eventId: number) => {
     const timeString = timeLeft[eventId];
-    if (!timeString || timeString.includes('بدأ الاختبار')) {
+    if (!timeString) {
+      return 'text-gray-600 font-medium';
+    }
+    
+    if (timeString.includes('انتهى الاختبار')) {
+      return 'text-gray-600 font-bold text-lg';
+    }
+    
+    if (timeString.includes('الاختبار جاري')) {
       return 'text-green-600 animate-pulse font-bold text-xl';
     }
     
@@ -285,7 +313,7 @@ export const ExamSchedule: React.FC<ExamScheduleProps> = ({ isDarkMode = false }
                       </div>
                       
                       {/* Progress bar for visual countdown */}
-                      {timeLeft[event.id] && !timeLeft[event.id].includes('بدأ الاختبار') && (
+                      {timeLeft[event.id] && !timeLeft[event.id].includes('الاختبار جاري') && !timeLeft[event.id].includes('انتهى الاختبار') && (
                         <div className="mt-3">
                           <div className={`w-full h-2 rounded-full overflow-hidden ${
                             isDarkMode ? 'bg-gray-600' : 'bg-gray-200'

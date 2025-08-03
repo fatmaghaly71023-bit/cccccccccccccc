@@ -348,46 +348,88 @@ export const MainPage: React.FC<MainPageProps> = ({ onNavigate, isDarkMode = fal
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               {/* Contact persons */}
               <div className="space-y-4">
-                {/* الشيخ مصباح الدكاني */}
+                {/* الشيخ مصباح عبدالمنجي الدكاني */}
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
                   <div className="flex items-center gap-4">
                     <img 
                       src="/src/assets/mesbah.jpg" 
-                      alt="الشيخ مصباح الدكاني"
+                      alt="الشيخ مصباح عبدالمنجي الدكاني"
                       className="w-16 h-16 rounded-full object-cover border-2 border-yellow-300 shadow-lg"
                     />
                     <div className="flex-1">
-                      <a
-                        href="https://wa.me/201220536204"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={() => {
+                          const modal = document.createElement('div');
+                          modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
+                          modal.innerHTML = `
+                            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full text-center">
+                              <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">تواصل مع الشيخ مصباح عبدالمنجي الدكاني</h3>
+                              <div class="space-y-4">
+                                <a href="https://wa.me/201220536204" target="_blank" rel="noopener noreferrer" class="block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                                  واتساب
+                                </a>
+                                <a href="https://www.facebook.com/mesbah.eldokany" target="_blank" rel="noopener noreferrer" class="block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                  فيسبوك
+                                </a>
+                              </div>
+                              <button onclick="this.parentElement.parentElement.remove()" class="mt-4 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                إغلاق
+                              </button>
+                            </div>
+                          `;
+                          document.body.appendChild(modal);
+                          modal.onclick = (e) => {
+                            if (e.target === modal) modal.remove();
+                          };
+                        }}
                         className="text-white hover:text-yellow-300 transition-colors font-bold text-lg block glowing-text"
                       >
-                        الشيخ مصباح الدكاني
-                      </a>
-                      <p className="text-blue-200 text-sm">للتواصل عبر الواتساب</p>
+                        الشيخ مصباح عبدالمنجي الدكاني
+                      </button>
+                      <p className="text-blue-200 text-sm">للتواصل عبر الواتساب والفيسبوك</p>
                     </div>
                   </div>
                 </div>
 
-                {/* الاستاذ اسلام سعيد */}
+                {/* الاستاذ اسلام سعيد الشقيدي */}
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
                   <div className="flex items-center gap-4">
                     <img 
                       src="/src/assets/eslam.jpg" 
-                      alt="الاستاذ اسلام سعيد"
+                      alt="الاستاذ اسلام سعيد الشقيدي"
                       className="w-16 h-16 rounded-full object-cover border-2 border-green-300 shadow-lg"
                     />
                     <div className="flex-1">
-                      <a
-                        href="https://wa.me/201276099675"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={() => {
+                          const modal = document.createElement('div');
+                          modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
+                          modal.innerHTML = `
+                            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full text-center">
+                              <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">تواصل مع الاستاذ اسلام سعيد الشقيدي</h3>
+                              <div class="space-y-4">
+                                <a href="https://wa.me/201276099675" target="_blank" rel="noopener noreferrer" class="block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                                  واتساب
+                                </a>
+                                <a href="https://www.facebook.com/Islam.saeed.1966" target="_blank" rel="noopener noreferrer" class="block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                  فيسبوك
+                                </a>
+                              </div>
+                              <button onclick="this.parentElement.parentElement.remove()" class="mt-4 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                إغلاق
+                              </button>
+                            </div>
+                          `;
+                          document.body.appendChild(modal);
+                          modal.onclick = (e) => {
+                            if (e.target === modal) modal.remove();
+                          };
+                        }}
                         className="text-white hover:text-yellow-300 transition-colors font-bold text-lg block glowing-text"
                       >
-                        الاستاذ اسلام سعيد
-                      </a>
-                      <p className="text-blue-200 text-sm">للتواصل عبر الواتساب</p>
+                        الاستاذ اسلام سعيد الشقيدي
+                      </button>
+                      <p className="text-blue-200 text-sm">للتواصل عبر الواتساب والفيسبوك</p>
                     </div>
                   </div>
                 </div>
@@ -395,24 +437,45 @@ export const MainPage: React.FC<MainPageProps> = ({ onNavigate, isDarkMode = fal
 
               <div className="space-y-4">
 
-                {/* احمد طارق علي الدين */}
+                {/* احمد طارق عبدالهادي علي الدين */}
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
                   <div className="flex items-center gap-4">
                     <img 
                       src="/src/assets/me.jpg" 
-                      alt="احمد طارق علي الدين"
+                      alt="احمد طارق عبدالهادي علي الدين"
                       className="w-16 h-16 rounded-full object-cover border-2 border-purple-300 shadow-lg"
                     />
                     <div className="flex-1">
-                      <a
-                        href="https://wa.me/201559181558"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={() => {
+                          const modal = document.createElement('div');
+                          modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
+                          modal.innerHTML = `
+                            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full text-center">
+                              <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">تواصل مع احمد طارق عبدالهادي علي الدين</h3>
+                              <div class="space-y-4">
+                                <a href="https://wa.me/201559181558" target="_blank" rel="noopener noreferrer" class="block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                                  واتساب
+                                </a>
+                                <a href="https://www.facebook.com/palestine7102023y/" target="_blank" rel="noopener noreferrer" class="block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                  فيسبوك
+                                </a>
+                              </div>
+                              <button onclick="this.parentElement.parentElement.remove()" class="mt-4 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                إغلاق
+                              </button>
+                            </div>
+                          `;
+                          document.body.appendChild(modal);
+                          modal.onclick = (e) => {
+                            if (e.target === modal) modal.remove();
+                          };
+                        }}
                         className="text-white hover:text-yellow-300 transition-colors font-bold text-lg block glowing-text"
                       >
-                        احمد طارق علي الدين
-                      </a>
-                      <p className="text-blue-200 text-sm">للتواصل عبر الواتساب</p>
+                        احمد طارق عبدالهادي علي الدين
+                      </button>
+                      <p className="text-blue-200 text-sm">للتواصل عبر الواتساب والفيسبوك</p>
                     </div>
                   </div>
                 </div>
@@ -452,7 +515,35 @@ export const MainPage: React.FC<MainPageProps> = ({ onNavigate, isDarkMode = fal
                 >
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
-                <span className="text-sm font-medium">Created by Ahmed Tareq</span>
+                <button 
+                  onClick={() => {
+                    const modal = document.createElement('div');
+                    modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
+                    modal.innerHTML = `
+                      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full text-center">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">تواصل مع المطور</h3>
+                        <div class="space-y-4">
+                          <a href="https://www.facebook.com/palestine7102023y/" target="_blank" rel="noopener noreferrer" class="block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                            فيسبوك
+                          </a>
+                          <a href="https://wa.me/201559181558" target="_blank" rel="noopener noreferrer" class="block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                            واتساب
+                          </a>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" class="mt-4 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                          إغلاق
+                        </button>
+                      </div>
+                    `;
+                    document.body.appendChild(modal);
+                    modal.onclick = (e) => {
+                      if (e.target === modal) modal.remove();
+                    };
+                  }}
+                  className="text-sm font-medium hover:text-white transition-colors"
+                >
+                  Created by Ahmed Tareq - تم التطوير بحب وإخلاص لخدمة كتاب الله
+                </button>
               </div>
             </div>
           </div>
